@@ -46,11 +46,11 @@
 
     <div class="feed">
     <!-- Actual Feed here -->
-    <% if @user %>
+    <% if @user && @feed %>
       <% @feed.each do |tweet| %>
-          <h4><%= tweet.user.screen_name %></h4>
-        <p><%= tweet.text %>
-        <%= tweet.created_at %></p>
+          <h4><%# tweet.user.screen_name %></h4>
+        <p><%# tweet.text %>
+        <%# tweet.created_at %></p>
       <% end  %>
     <% end %>
   </div>

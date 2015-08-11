@@ -21,19 +21,30 @@ class FeedsController < ApplicationController
       # @people << Tweet.find(@user.tweet_ids)
       # @people.flatten!
 
-      @feed = []
-      # @people.each do |person|
-      usernames = @user.tweets.map &:username
-      usernames.each do |username|
-        # username = person.username
-        @feed << @twitter.client.user_timeline(username)
-        # raise
 
+
+
+      @feed = []
+      tweet_ids = @user.tweets.map &:id
+      tweet_ids.each do |tweet_id|
+        @feed << TweetPost.where(tweet_id: tweet_id)
       end
-      # raise
-      @feed.flatten!
-      @feed.sort_by! { |tweet| tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") }
-      @feed.reverse!
+
+
+
+    #   @feed = []
+    #   # @people.each do |person|
+    #   usernames = @user.tweets.map &:username
+    #   usernames.each do |username|
+    #     # username = person.username
+    #     @feed << @twitter.client.user_timeline(username)
+    #     # raise
+    #
+    #   end
+    #   # raise
+    #   @feed.flatten!
+    #   @feed.sort_by! { |tweet| tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") }
+    #   @feed.reverse!
     end
   end
 
