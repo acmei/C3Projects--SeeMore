@@ -32,4 +32,5 @@ FactoryGirl.define do
     provider_id "89"
     user_ids [1]
   end
+
 end
